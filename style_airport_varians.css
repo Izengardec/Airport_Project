@@ -1,0 +1,54 @@
+.variant_airport_left{
+	width:calc(100%-16px);
+	height:200px;
+	background-color: white;
+	border:3px solid black;
+	margin-bottom: 6px;
+	padding: 2px;
+  }
+  .variant_airport_right{
+	width:calc(100%-16px);
+	height:200px;
+	background-color: white;
+	border:3px solid black;
+	margin-left: 6px;
+	margin-bottom: 6px;
+	padding: 2px;
+  }
+  .variant_airport_select{
+	background-color: #edc478;
+  }
+  .variant_airport_left:hover{
+	background-color: #f5deb3;
+  }
+  .variant_airport_right:hover{
+	background-color: #f5deb3;
+  }
+  .firsttablo{
+	margin-left: 100px;
+	display: table-cell;
+	font-family:'Russo One', sans-serif;
+	min-width:326px;
+	width: 50%;
+	
+  }
+  .secondtablo{
+	display: table-cell;
+	font-family:'Russo One', sans-serif;
+	min-width:326px;
+	width: 50%;
+  }
+  .main_form{
+	  padding-top:6px;
+	  background-color:white;
+	  display: table;
+	  height:auto;
+	  margin: auto;
+	  width: 80%;
+  }
+  .main_form0{
+	  background-color:white;
+	  display: block;
+	  height:auto;
+	  width: 100%;
+  }

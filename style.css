@@ -1,0 +1,83 @@
+html
+{
+	background-color:rgba(204,204,255,0.5);
+	margin:0;
+}
+body 
+{
+    margin: 0; /* Убираем отступы в браузере */
+}
+.main_desition{
+	font-size: 25px;
+	font-family: 'Russo One', sans-serif;
+	margin:0 25% 0 25%;
+    width:50%;	
+	margin-bottom:10px;
+}
+.main_header
+{
+	background-color:rgba(153,153,255,0.7);
+	width:100%;
+	margin-top:1%;
+	padding:0;
+	text-align:center;
+	font-family: 'Russo One', sans-serif;
+	font-size:40px;
+	color:#330066;
+	border:0;
+	min-width:652px;
+}
+.dateCl{
+	height: 4%;
+	width: 20%;
+	margin-right: 10%;
+}
+.main_header_name
+{
+	border-bottom: 1px solid black;
+	font-size:50px;
+}
+.menu_buttons
+{
+	border-left:1px solid black;
+	border-right:1px solid black;
+	display:inline-block;
+}
+.btn_from{
+	position:block;
+	font-family: 'Russo One', sans-serif;
+	font-size: 25px;
+	margin:0 25% 0 25%;
+	width:50%;
+}
+.input_of_from
+{
+	width: 100%;
+	height: 40px;
+	font-family: 'Russo One', sans-serif;
+	font-size: 25px;
+	background-color: transparent;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	border-bottom: 0px solid black;
+	-webkit-transition: top 5s ease-out 5s;
+}
+	
+.input_of_from:focus
+{
+	border-bottom: 1px solid black;
+	
+}
+#map-canvas {
+        height: 50%;
+        margin: 0 20%;
+        padding: 0px
+      }
+.invis{
+	height:0px;
+	width:0px;
+	position:absolute;
+	left:-100px;
+}
+

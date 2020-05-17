@@ -1,0 +1,39 @@
+html
+{
+	background-color:blue;
+	margin:0;
+}
+p{
+	text-align:center;
+	color:red;
+	
+}
+body 
+{
+    margin: 0; /* Убираем отступы в браузере */
+}
+input{
+	margin:0 25% 5px 25%;
+	width:50%;
+	height:10%;
+	font-size:120%;
+	font-family: 'Russo One', sans-serif;
+	
+}
+.formAuth{
+	width:40%;
+	float:left;
+	margin:20% 10% 0 10%;	
+}
+.leftWall {
+	width:20%;
+	height:100%;
+	background-color:white;
+	float:left
+}
+.rightWall{
+	width:20%;
+	height:100%;
+	background-color:white;
+	float:left
+}

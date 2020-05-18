@@ -1,0 +1,28 @@
+.big_tickets_div{
+  margin: 0 20% 0 20%;
+  padding: 3px;
+  display: block;
+  font-family: 'Russo One', sans-serif;
+}
+.variant_tickets{
+  display: block;
+  border: black solid 3px;
+  margin-bottom: 5px;
+  height: 150px;
+  min-width: 510px;
+}
+.variant_tickets:hover{
+  background-color:white;
+}
+.text_about_ticket{
+  display: inline-block;
+  height: 100%;
+  font-size: 25px;
+  word-wrap: break-word;
+  width: 66%;
+
+}
+.img_airlines{
+  height: 100%;
+  width: 34%;
+}

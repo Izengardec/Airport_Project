@@ -31,16 +31,16 @@
 	$homelang=0;
 	$tmps=explode(" ", $_COOKIE['latlanghome']);
 	$tmps2=explode(" ", $_COOKIE['latlangwhere']);
-	
+
 	$homeLath=(float)$tmps[0];
 	$homelang=(float)$tmps[1];
-	
+
 	$whereLath=(float)$tmps2[0];
 	$wherelang=(float)$tmps2[1];
-	
+
 	$big_nameairport;
 	$big_nameairport2;
-	
+
 	$minco=500000;
 	$array = array();
 	$nameairport=array();
@@ -48,7 +48,7 @@
 	$array2 = array();
 	$nameairport2=array();
 	$info2= array();
-	
+
 	if($result)
 	{
 		$rows = mysqli_num_rows($result);
@@ -137,6 +137,7 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcK1XpUdsDXdhA6YyY-sCHFNYypzVZmY&callback=initialize"></script>
 		<LINK REL="stylesheet" HREF = "style.css">
+		<LINK REL="stylesheet" HREF = "style_for_tickets.css">
 		<link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
 	<body>
 		<div class="main_header">
@@ -150,19 +151,25 @@
 		<?php
 		$big_nameairport=substr($big_nameairport,0,-1);
 		$big_nameairport2=substr($big_nameairport2,0,-1);
-		echo $_COOKIE['datehome'];
 		$query="SELECT * FROM `flights` WHERE airportFrom in (SELECT CodeAirport FROM `airports` WHERE Name IN (".$big_nameairport.")) and airportWhere in (SELECT CodeAirport FROM `airports`  WHERE Name IN (".$big_nameairport2.")) AND DateDeparture>='".$_COOKIE['datehome']." 00:00:00' AND DateDeparture<='".$_COOKIE['datehome']." 23:59:59'";
 		$result=mysqli_query($link,$query)or die("Ошибка запроса".mysqli_error($link));
 			if(mysqli_num_rows($result)!=0)
 				{
 				$rows = mysqli_num_rows($result);
-				for ($i = 0 ; $i <= $rows ; ++$i)
+				echo "<div class='big_tickets_div'>";
+				for ($i = 0 ; $i < $rows ; ++$i)
 					{
 						$row = mysqli_fetch_row($result);
-						echo $row[0].$row[1].$row[2].$row[3]."<br>";
+						echo "<div class='variant_tickets' id='btn_".$i."'>"."<img class='img_airlines' align='top' src=\"images\\".$row[4].".png\" alt=\"Картинка отсутствует\" /><p class='text_about_ticket'>".$row[1]." - ".$row[2]."<br>Дата отправки: ".$row[3]."</p></div>
+						<script>
+							document.getElementById('btn_".$i."').addEventListener('click',function(){
+								location.href = \"http://airport/login.php?id=\" + ".$i.";
+							});
+						</script>";
 				}
 				}
+				echo "</div>";
 		?>
+
 		</body>
 		</html>
-		

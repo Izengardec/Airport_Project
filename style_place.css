@@ -1,0 +1,35 @@
+.chooser_tic{
+  font-family: 'Russo One', sans-serif;
+  width:80%;
+  margin: 0 10% 0 10%;
+  background-color: white;
+  padding: 2px;
+  min-width: 751px;
+}
+.seat{
+  height: 40px;
+  width:40px;
+  background-color: gray;
+  margin: 1px 2px 1px 2px;
+  display: inline-block;
+}
+.row_t{
+  width: 600px;
+}
+.freespace{
+  height: 40px;
+  width:40px;
+  background-color: transparent;
+  margin: 1px 2px 1px 2px;
+  display: inline-block;
+}
+.plane_scheme{
+  width: 600px;
+  display: table-cell;
+}
+.info{
+  height: 100%;
+  border: DarkGrey solid 2px;
+  width:100%;
+  display: table-cell;
+}

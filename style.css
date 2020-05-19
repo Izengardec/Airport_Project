@@ -3,7 +3,7 @@ html
 	background-color:rgba(204,204,255,0.5);
 	margin:0;
 }
-body 
+body
 {
     margin: 0; /* Убираем отступы в браузере */
 }
@@ -11,7 +11,7 @@ body
 	font-size: 25px;
 	font-family: 'Russo One', sans-serif;
 	margin:0 25% 0 25%;
-    width:50%;	
+    width:50%;
 	margin-bottom:10px;
 }
 .main_header
@@ -25,7 +25,7 @@ body
 	font-size:40px;
 	color:#330066;
 	border:0;
-	min-width:652px;
+	min-width:660px;
 }
 .dateCl{
 	height: 4%;
@@ -63,11 +63,11 @@ body
 	border-bottom: 0px solid black;
 	-webkit-transition: top 5s ease-out 5s;
 }
-	
+
 .input_of_from:focus
 {
 	border-bottom: 1px solid black;
-	
+
 }
 #map-canvas {
         height: 50%;
@@ -80,4 +80,3 @@ body
 	position:absolute;
 	left:-100px;
 }
-

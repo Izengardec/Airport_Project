@@ -160,15 +160,16 @@
 				for ($i = 0 ; $i < $rows ; ++$i)
 					{
 						$row = mysqli_fetch_row($result);
-						echo "<div class='variant_tickets' id='btn_".$i."'>"."<img class='img_airlines' align='top' src=\"images\\".$row[4].".png\" alt=\"Картинка отсутствует\" /><p class='text_about_ticket'>".$row[1]." - ".$row[2]."<br>Дата отправки: ".$row[3]."</p></div>
+						echo "<div class='variant_tickets' id='btn_".$row[0]."'>"."<img class='img_airlines' align='top' src=\"images\\".$row[4].".png\" alt=\"Картинка отсутствует\" /><p class='text_about_ticket'>".$row[1]." - ".$row[2]."<br>Дата отправки: ".$row[3]."</p></div>
 						<script>
 							document.getElementById('btn_".$i."').addEventListener('click',function(){
-								location.href = \"http://airport/login.php?id=\" + ".$i.";
+								location.href = \"http://airport/choose_place.php?id=".$row[0]."&plane='".$row[5]."'\";
 							});
 						</script>";
 				}
 				}
 				echo "</div>";
+				mysqli_close($link);
 		?>
 
 		</body>

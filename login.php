@@ -1,7 +1,3 @@
 <?php
- echo $_COOKIE['pass'].time();
+ echo "Hello, world!";
 ?>
-<LINK REL="stylesheet" HREF = "authorization.css">
-<body>
-</body>
-</html>

@@ -106,4 +106,15 @@
   border: DarkGrey solid 2px;
   width:100%;
   display: table-cell;
+  padding: 3px;
+}
+.sum_tickets{
+  font-size: 25px;
+}
+.choosing_place{
+  border:black solid 2px;
+  padding: 2px;
+}
+.choosing_place:hover{
+  background-color: wheat;
 }

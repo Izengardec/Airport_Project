@@ -13,12 +13,11 @@
 <title>Main Window</title>
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDcK1XpUdsDXdhA6YyY-sCHFNYypzVZmY&callback=initialize"></script>
   <LINK REL="stylesheet" HREF = "style.css">
   <LINK REL="stylesheet" HREF = "style_place.css">
   <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="loadPage()">
   <div class="main_header">
     <div class="main_header_name">Sparta travel</div>
     <ul class='button_menu' style="text-align: left;">
@@ -46,45 +45,97 @@
               echo "<div class='seat' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
               echo "<script>
                 document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                  if (this.className!='occupied'){
+                  if (this.className!='occupied' && this.className!='my_place'){
+                    document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                     var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                     arr[1] = Number(".$row2[3].")+Number(arr[1]);
                     document.getElementById('sum_tickets').innerHTML='Итого: '+arr[1]+' руб.'
                     this.className='my_place';
                     var elem = document.createElement('p');
                     elem.id=this.id+'_place';
-                    elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                    elem.className='choosing_place';
+                    elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                     document.getElementById('info').appendChild(elem);
+                    document.getElementById(elem.id).addEventListener('click',function(){
+                      document.getElementById('".$row2[2]."_".$row2[1]."').className='seat';
+                      document.getElementById('info').removeChild(document.getElementById(elem.id));
+                      var str=document.getElementById('now_tickets').value.split(' ');
+                      var tmpStr='';
+                      for (var i=0;i<str.length;i++){
+                        if (str[i]!='".$row2[2]."_".$row2[1]."'){
+                          tmpStr+=str[i];
+                        }
+                      }
+                      document.getElementById('now_tickets').value=tmpStr;
+                      str=this.innerHTML.split(' ');
+                      var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                      arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                    });
                 }
               });</script>";
         } else if ($row2[4]==2){
             echo "<div class='business' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
             echo "<script>
               document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                if (this.className!='occupied'){
+                if (this.className!='occupied' && this.className!='my_place'){
+                  document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                   var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                   arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                  document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                  document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                   this.className='my_place';
                   var elem = document.createElement('p');
                   elem.id=this.id+'_place';
-                  elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                  elem.className='choosing_place';
+                  elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                   document.getElementById('info').appendChild(elem);
+                  document.getElementById(elem.id).addEventListener('click',function(){
+                    document.getElementById('".$row2[2]."_".$row2[1]."').className='business';
+                    document.getElementById('info').removeChild(document.getElementById(elem.id));
+                    var str=document.getElementById('now_tickets').value.split(' ');
+                    var tmpStr='';
+                    for (var i=0;i<str.length;i++){
+                      if (str[i]!='".$row2[2]."_".$row2[1]."')
+                        tmpStr+=str[i]+' ';
+                    }
+                    document.getElementById('now_tickets').value=tmpStr;
+                    str=this.innerHTML.split(' ');
+                    var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                    arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                    document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                  });
               }
             });</script>";
         } else if ($row2[4]==3){
             echo "<div class='first_class' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
             echo "<script>
               document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                if (this.className!='occupied'){
+                if (this.className!='occupied' && this.className!='my_place'){
+                  document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                   var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                   arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                  document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                  document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                   this.className='my_place';
                   var elem = document.createElement('p');
                   elem.id=this.id+'_place';
-                  elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                  elem.className='choosing_place';
+                  elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                   document.getElementById('info').appendChild(elem);
+                  document.getElementById(elem.id).addEventListener('click',function(){
+                    document.getElementById('".$row2[2]."_".$row2[1]."').className='first_class';
+                    document.getElementById('info').removeChild(document.getElementById(elem.id));
+                    var str=document.getElementById('now_tickets').value.split(' ');
+                    var tmpStr='';
+                    for (var i=0;i<str.length;i++){
+                      if (str[i]!='".$row2[2]."_".$row2[1]."')
+                        tmpStr+=str[i]+' ';
+                    }
+                    document.getElementById('now_tickets').value=tmpStr;
+                    str=this.innerHTML.split(' ');
+                    var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                    arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                    document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                  });
               }
             });</script>";
       }
@@ -108,45 +159,96 @@
                 echo "<div class='seat' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
                 echo "<script>
                   document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                    if (this.className!='occupied'){
+                    if (this.className!='occupied' && this.className!='my_place'){
+                      document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                       var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                       arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                       this.className='my_place';
                       var elem = document.createElement('p');
                       elem.id=this.id+'_place';
-                      elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                      elem.className='choosing_place';
+                      elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                       document.getElementById('info').appendChild(elem);
+                      document.getElementById(elem.id).addEventListener('click',function(){
+                        document.getElementById('".$row2[2]."_".$row2[1]."').className='seat';
+                        document.getElementById('info').removeChild(document.getElementById(elem.id));
+                        var str=document.getElementById('now_tickets').value.split(' ');
+                        var tmpStr='';
+                        for (var i=0;i<str.length;i++){
+                          if (str[i]!='".$row2[2]."_".$row2[1]."')
+                            tmpStr+=str[i]+' ';
+                        }
+                        document.getElementById('now_tickets').value=tmpStr;
+                        str=this.innerHTML.split(' ');
+                        var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                        arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                        document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                      });
                   }
                 });</script>";
           } else if ($row2[4]==2){
               echo "<div class='business' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
               echo "<script>
                 document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                  if (this.className!='occupied'){
+                  if (this.className!='occupied' && this.className!='my_place'){
+                    document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                     var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                     arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                    document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                    document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                     this.className='my_place';
                     var elem = document.createElement('p');
                     elem.id=this.id+'_place';
-                    elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                    elem.className='choosing_place';
+                    elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                     document.getElementById('info').appendChild(elem);
+                    document.getElementById(elem.id).addEventListener('click',function(){
+                      document.getElementById('".$row2[2]."_".$row2[1]."').className='business';
+                      document.getElementById('info').removeChild(document.getElementById(elem.id));
+                      var str=document.getElementById('now_tickets').value.split(' ');
+                      var tmpStr='';
+                      for (var i=0;i<str.length;i++){
+                        if (str[i]!='".$row2[2]."_".$row2[1]."')
+                          tmpStr+=str[i]+' ';
+                      }
+                      document.getElementById('now_tickets').value=tmpStr;
+                      str=this.innerHTML.split(' ');
+                      var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                      arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                    });
                 }
               });</script>";
           } else if ($row2[4]==3){
               echo "<div class='first_class' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
               echo "<script>
                 document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                  if (this.className!='occupied'){
+                  if (this.className!='occupied' && this.className!='my_place'){
+                    document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                     var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                     arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                    document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                    document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                     this.className='my_place';
                     var elem = document.createElement('p');
                     elem.id=this.id+'_place';
-                    elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                    elem.className='choosing_place';
+                    elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                     document.getElementById('info').appendChild(elem);
+                    document.getElementById(elem.id).addEventListener('click',function(){
+                      document.getElementById('".$row2[2]."_".$row2[1]."').className='first_class';
+                      document.getElementById('info').removeChild(document.getElementById(elem.id));
+                      var str=document.getElementById('now_tickets').value.split(' ');
+                      var tmpStr='';
+                      for (var i=0;i<str.length;i++){
+                        if (str[i]!='".$row2[2]."_".$row2[1]."')
+                          tmpStr+=str[i]+' ';
+                      }
+                      document.getElementById('now_tickets').value=tmpStr;
+                      str=this.innerHTML.split(' ');
+                      var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                      arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                    });
                 }
               });</script>";
         }
@@ -175,56 +277,106 @@
                   echo "<div class='seat' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
                   echo "<script>
                     document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                      if (this.className!='occupied'){
+                      if (this.className!='occupied' && this.className!='my_place'){
+                        document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                         var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                         arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                        document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                        document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                         this.className='my_place';
                         var elem = document.createElement('p');
                         elem.id=this.id+'_place';
-                        elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                        elem.className='choosing_place';
+                        elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                         document.getElementById('info').appendChild(elem);
+                        document.getElementById(elem.id).addEventListener('click',function(){
+                          document.getElementById('".$row2[2]."_".$row2[1]."').className='seat';
+                          document.getElementById('info').removeChild(document.getElementById(elem.id));
+                          var str=document.getElementById('now_tickets').value.split(' ');
+                          var tmpStr='';
+                          for (var i=0;i<str.length;i++){
+                            if (str[i]!='".$row2[2]."_".$row2[1]."')
+                              tmpStr+=str[i]+' ';
+                          }
+                          document.getElementById('now_tickets').value=tmpStr;
+                          str=this.innerHTML.split(' ');
+                          var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                          arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                          document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                        });
                     }
                   });</script>";
             } else if ($row2[4]==2){
                 echo "<div class='business' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
                 echo "<script>
                   document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                    if (this.className!='occupied'){
+                    if (this.className!='occupied' && this.className!='my_place'){
+                      document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                       var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                       arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                      var a=1+1;
-                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                       this.className='my_place';
                       var elem = document.createElement('p');
                       elem.id=this.id+'_place';
-                      elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                      elem.className='choosing_place';
+                      elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
                       document.getElementById('info').appendChild(elem);
+                      document.getElementById(elem.id).addEventListener('click',function(){
+                        document.getElementById('".$row2[2]."_".$row2[1]."').className='business';
+                        document.getElementById('info').removeChild(document.getElementById(elem.id));
+                        var str=document.getElementById('now_tickets').value.split(' ');
+                        var tmpStr='';
+                        for (var i=0;i<str.length;i++){
+                          if (str[i]!='".$row2[2]."_".$row2[1]."')
+                            tmpStr+=str[i]+' ';
+                        }
+                        document.getElementById('now_tickets').value=tmpStr;
+                        str=this.innerHTML.split(' ');
+                        var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                        arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                        document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                      });
                   }
                 });</script>";
             } else if ($row2[4]==3){
                 echo "<div class='first_class' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
                 echo "<script>
                   document.getElementById('".$row2[2]."_".$row2[1]."').addEventListener('click',function(){
-                    if (this.className!='occupied'){
+                    if (this.className!='occupied' && this.className!='my_place'){
+                      document.getElementById('now_tickets').value+='".$row2[2]."_".$row2[1]." ';
                       var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
                       arr[1] = Number(".$row2[3].")+Number(arr[1]);
-                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.'
+                      document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
                       this.className='my_place';
                       var elem = document.createElement('p');
                       elem.id=this.id+'_place';
-                      elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."';
+                      elem.className='choosing_place';
+                      elem.innerHTML='Место ".$row2[2]." ".$row2[1]." Стоимость: ".$row2[3]."';
+
                       document.getElementById('info').appendChild(elem);
+                      document.getElementById(elem.id).addEventListener('click',function(){
+                        document.getElementById('".$row2[2]."_".$row2[1]."').className='first_class';
+                        document.getElementById('info').removeChild(document.getElementById(elem.id));
+                        var str=document.getElementById('now_tickets').value.split(' ');
+                        var tmpStr='';
+                        for (var i=0;i<str.length;i++){
+                          if (str[i]!='".$row2[2]."_".$row2[1]."')
+                            tmpStr+=str[i]+' ';
+                        }
+                        document.getElementById('now_tickets').value=tmpStr;
+                        str=this.innerHTML.split(' ');
+                        var arr=document.getElementById('sum_tickets').innerHTML.split(' ');
+                        arr[1] = Number(arr[1])-Number(str[str.length-1]);
+                        document.getElementById('sum_tickets').innerHTML='Итого: '+ arr[1] +' руб.';
+                      });
                   }
-                });</script>";
+                });
+
+                </script>";
           }
         } else {
           echo "<div class='occupied' id='".$row2[2]."_".$row2[1]."' data-title='Место ".$row2[2]." ".$row2[1]." Стоимость:".$row2[3]."'></div>";
         }
             }
-
-
-
         }
       }
         echo "</div>";
@@ -233,10 +385,21 @@
   ?>
     <div class='info' id ='info'>
       <h2 align='center'>Выбранные билеты</h2>
-      <div id ='sum_tickets'>Итого: 0 руб.<div>
+      <form action='access_contract.php' method='post'>
+        <input type='submit' name='sub_btn' value='Подвердить выбор'>
+        <input type='text' id='now_tickets' name='now_tickets' value=''>
+      </form>
+      <div id ='sum_tickets' class='sum_tickets'>Итого: 0 руб.<div>
     </div>
   </div>
   <?php
-   ?>
+    mysqli_close($link);
+    mysqli_close($link2);
+  ?>
+  <script>
+   function loadPage() {
+     document.getElementById('now_tickets').value = '';
+   }
+  </script>
 </body>
 </html>

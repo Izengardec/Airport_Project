@@ -6,13 +6,86 @@
   padding: 2px;
   min-width: 751px;
 }
+.my_place{
+  height: 40px;
+  width:40px;
+  background-color: Goldenrod;
+  margin: 1px 2px 1px 2px;
+  display: inline-block;
+}
+.business{
+  position:relative;
+  height: 40px;
+  width:40px;
+  background-color: #008000;
+  margin: 1px 2px 1px 2px;
+  display: inline-block;
+}
+.business:hover{
+  background-color: orange;
+}
+.business:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position:absolute; /* Абсолютное позиционирование *//* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    top:40px;
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+   }
+.first_class{
+  position:relative;
+  height: 40px;
+  width:40px;
+  background-color: blue;
+  margin: 1px 2px 1px 2px;
+  display: inline-block;
+}
+.first_class:hover{
+  background-color: orange;
+}
+.first_class:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position:absolute; /* Абсолютное позиционирование *//* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    top:40px;
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+   }
+.occupied{
+  height: 40px;
+  width:40px;
+  background-color: red;
+  margin: 1px 2px 1px 2px;
+  display: inline-block;
+}
 .seat{
+  position:relative;
   height: 40px;
   width:40px;
   background-color: gray;
   margin: 1px 2px 1px 2px;
   display: inline-block;
 }
+.seat:hover{
+  background-color: orange;
+}
+.seat:hover::after {
+    content: attr(data-title); /* Выводим текст */
+    position:absolute; /* Абсолютное позиционирование *//* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    top:40px;
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 11px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+   }
 .row_t{
   width: 600px;
 }
@@ -26,6 +99,7 @@
 .plane_scheme{
   width: 600px;
   display: table-cell;
+  border: DarkGrey solid 2px;
 }
 .info{
   height: 100%;

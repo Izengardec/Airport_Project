@@ -94,6 +94,7 @@
 					$tmpDoub=calc_dist($homeLath,$homelang,$row[4],$row[5]);
 						if ($tmpDoub<$minco){
 							$info[]=$row[6];
+							$big_nameairport.="'".$row[2]."',";
 							$nameairport[]=$row[2];
 							$tmpDoub/=1000;
 						$tmpDoub *= 100;
@@ -117,6 +118,7 @@
 					$tmpDoub=calc_dist($whereLath,$wherelang,$row[4],$row[5]);
 					if ($tmpDoub<$minco){
 						$info2[]=$row[6];
+						$big_nameairport2.="'".$row[2]."',";
 						$nameairport2[]=$row[2];
 						$tmpDoub/=1000;
 					$tmpDoub *= 100;

@@ -7,6 +7,9 @@ body
 {
     margin: 0; /* Убираем отступы в браузере */
 }
+*{
+  font-family: 'Russo One', sans-serif;
+}
 .main_desition{
 	font-size: 25px;
 	font-family: 'Russo One', sans-serif;
@@ -42,6 +45,7 @@ body
 	border-left:1px solid black;
 	border-right:1px solid black;
 	display:inline-block;
+	margin:0px;
 }
 .btn_from{
 	position:block;

@@ -9,6 +9,10 @@
   $result=mysqli_query($link,$query)or die("Ошибка запроса".mysqli_error($link));
   $row = mysqli_fetch_row($result);
   $max_Col= array($row[1],$row[2],$row[3]);
+
+    $query="SELECT * FROM `planescheme` WHERE NameOfPlane='".$_GET['plane']."' ORDER BY numRow";
+    setcookie("nowId",$_GET['id']);
+    $result=mysqli_query($link,$query)or die("Ошибка запроса".mysqli_error($link));
 ?>
 <title>Main Window</title>
   <meta charset="utf-8">
@@ -28,8 +32,6 @@
   </div>
   <div class="chooser_tic">
   <?php
-    $query="SELECT * FROM `planescheme` WHERE NameOfPlane='".$_GET['plane']."' ORDER BY numRow";
-    $result=mysqli_query($link,$query)or die("Ошибка запроса".mysqli_error($link));
     $rows = mysqli_num_rows($result);
     echo "<div class='plane_scheme'>";
     for ($i = 0 ; $i < $rows ; ++$i)
@@ -387,9 +389,10 @@
       <h2 align='center'>Выбранные билеты</h2>
       <form action='access_contract.php' method='post'>
         <input type='submit' name='sub_btn' value='Подвердить выбор'>
-        <input type='text' id='now_tickets' name='now_tickets' value=''>
-      </form>
-      <div id ='sum_tickets' class='sum_tickets'>Итого: 0 руб.<div>
+        <input type='hidden' id='now_tickets' name='now_tickets' value=''>
+
+        <div id ='sum_tickets' class='sum_tickets' name='sum_tickets'>Итого: 0 руб.<div>
+        </form>
     </div>
   </div>
   <?php

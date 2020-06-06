@@ -1,0 +1,45 @@
+*{
+  font-family: 'Russo One', sans-serif;
+}
+.sel{
+  width: 100%;
+}
+.form_class{
+  width: 40%;
+  display: inline-grid;
+  background-color: white;
+  border: 8px solid transparent;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+.place_form{
+  width: 60%;
+  margin: 0 20% 0 20%;
+  background-color: white;
+  border: 8px solid transparent;
+  min-width: 665px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+.input_place{
+  width:60%;
+  margin: 5px 20% 0 20%;
+  background-color: transparent;
+  border:none;
+  border-bottom: gray solid 2px;
+  height: 30px;
+  font-size: 100%;
+}
+.input_place:focus{
+  border-bottom: black solid 2px;
+}
+.finish_btn{
+  width:30%;
+  margin: 5px 35% 0 35%;
+  height: 30px;
+  width: auto;
+}
+.mistake{
+  color:red;
+  width:100%;
+  text-align: center;
+  display: block;
+}

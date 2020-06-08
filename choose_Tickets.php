@@ -144,11 +144,6 @@
 	<body>
 		<div class="main_header">
 			<div class="main_header_name">Sparta travel</div>
-			<ul class='button_menu' style="text-align: left;">
-				<li class="menu_buttons">Статистика</li>
-				<li class="menu_buttons">Что-то</li>
-				<li class="menu_buttons">3-ий пункт</li>
-			</ul>
 		</div>
 		<?php
 		$big_nameairport=substr($big_nameairport,0,-1);

@@ -32,13 +32,21 @@
 			  console.log("Адрес не найден");
 			 }
 			});
-			
+
 		});
-		
+
 	}
 	document.getElementById('input_of_from').addEventListener('click',function(){ isFromYou=true; isWhereYou=false;});
 	document.getElementById('input_of_where').addEventListener('click',function(){ isFromYou=false; isWhereYou=true;});
-	document.getElementById('checkCal').addEventListener('click',function(){ 
+	document.getElementById('input_of_from').onpaste =document.getElementById('input_of_from').oncut =function(event) {
+    this.innerHTML=this.innerHTML;
+    return false;
+  };
+	document.getElementById('input_of_where').onpaste=document.getElementById('input_of_where').oncut =function(event) {
+		this.innerHTML=this.innerHTML;
+    return false;
+  };
+	document.getElementById('checkCal').addEventListener('click',function(){
 		if (this.checked==true){
 			var node = document.getElementById("calendarwhere");
 			if (node.parentNode) {
@@ -48,8 +56,8 @@
 		} else {
 			var elem = document.createElement("input");
 			elem.type = "date";
-			elem.name="checkCal"; 
-			elem.id='calendarwhere'; 
+			elem.name="checkCal";
+			elem.id='calendarwhere';
 			elem.className="dateCl";
 			elem.style="height: 4%;width: 20%;";
 			document.getElementById("placeInput").innerHTML="Обратно:";

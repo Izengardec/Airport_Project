@@ -22,32 +22,18 @@ if(isset($_POST['submit'])){
 		<link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
 	<body>
 		<div class="main_header">
-			<div class="main_header_name">Sparta travel</div>
-			<ul class='button_menu' style="text-align: left;">
-				<li class="menu_buttons">Статистика</li>
-				<li class="menu_buttons">Что-то</li>
-				<li class="menu_buttons">3-ий пункт</li>
-			</ul>
+			<a class="main_header_name" href="index.php">Sparta travel</a>
 		</div>
 		<form method="POST" id='itsForm'>
 			<div class="main_desition">
 				Откуда:
-				<input class="input_of_from" name="input_of_from" id="input_of_from" placeholder="Откуда вы" title="Выберите место на карте" required onkeypress="return false;"></input>
+				<input class="input_of_from" name="input_of_from" id="input_of_from" placeholder="Откуда вы" title="Выберите место на карте" required onkeypress="return false;" autocomplete="off"></input>
 			</div>
 			<div class="main_desition">
 				Куда:
-				<input class="input_of_from" name="input_of_where" id="input_of_where" placeholder="Куда вы" title="Выберите место на карте" required onkeypress="return false;"></input>
+				<input class="input_of_from" name="input_of_where" id="input_of_where" placeholder="Куда вы" title="Выберите место на карте" required onkeypress="return false;" autocomplete="off"></input>
 				Туда:
 				<input type="date" name="calendarfrom" class="dateCl" required>
-				<?php
-
-				?>
-				<div id='placeInput'>
-				Обратно:
-				<input type="date" name="calendarwhere" id="calendarwhere" style="height: 4%;width: 20%;">
-				</div>
-				В одну сторону?
-				<input type="checkbox" name="checkCal" id='checkCal' value="В одну сторону?">
 				<input type="submit" name="submit" value="Найти аэропорт" class="btn_from">
 			</div>
 			<div id="map-canvas"></div>

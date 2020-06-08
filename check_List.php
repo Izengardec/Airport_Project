@@ -46,11 +46,6 @@ $result2=mysqli_query($link2,$query)or die("Ошибка запроса5".mysqli
 <body>
   <div class="main_header">
     <div class="main_header_name">Sparta travel</div>
-    <ul class='button_menu' style="text-align: left;">
-      <li class="menu_buttons">Статистика</li>
-      <li class="menu_buttons">Что-то</li>
-      <li class="menu_buttons">3-ий пункт</li>
-    </ul>
   </div>
   <div class="big_form">
     <form method='post' action='index.php']>
@@ -58,7 +53,7 @@ $result2=mysqli_query($link2,$query)or die("Ошибка запроса5".mysqli
       <?php
         for ($i=0; $i <mysqli_num_rows($result2) ; $i++) {
           $row=mysqli_fetch_row($result2);
-          echo "<p>".$row[0].$row[3].$row[2]."</p><br>";
+          echo "<p>Билет №".$row[0]." на место ".$row[3]." ".$row[2]."</p><br>";
         }
       ?>
       <input type='submit' value='Вернуться'>

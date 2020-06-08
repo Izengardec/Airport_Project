@@ -24,11 +24,6 @@
 <body onload="loadPage()">
   <div class="main_header">
     <div class="main_header_name">Sparta travel</div>
-    <ul class='button_menu' style="text-align: left;">
-      <li class="menu_buttons">Статистика</li>
-      <li class="menu_buttons">Что-то</li>
-      <li class="menu_buttons">3-ий пункт</li>
-    </ul>
   </div>
   <div class="chooser_tic">
   <?php
@@ -386,14 +381,34 @@
     echo "</div>";
   ?>
     <div class='info' id ='info'>
+      <h2 align='center'>Обозначение мест</h2>
+      <?php
+        $query="SELECT `type`,`NameTicket`,`Discribtion`  FROM `tickets`,`ttypeoftickets` WHERE  type=idType and idFlight=".$_GET['id']." GROUP BY `type`,`NameTicket`,`Discribtion`;";
+        $result=mysqli_query($link,$query)or die("Ошибка запроса".mysqli_error($link));
+        for ($i=0; $i < mysqli_num_rows($result); $i++) {
+          $row=mysqli_fetch_row($result);
+          if ($row[0]==1){
+           echo "<div><div class='example_cube' style='background-color: gray;' align='center'> &nbsp</div>&nbsp".$row[1]." ".$row[2]."</div>";
+         }
+         if ($row[0]==2){
+          echo "<div><div class='example_cube' style='background-color: #008000;' align='center'>&nbsp</div>&nbsp".$row[1]." ".$row[2]."</div>";
+        }
+        if ($row[0]==3){
+         echo "<div><div class='example_cube' style='background-color: blue;' align='center'>&nbsp</div>&nbsp".$row[1]." ".$row[2]."</div>";
+       }
+        }
+        echo "<div><div class='example_cube' style='background-color: red;' align='center'>&nbsp</div>&nbspЗанято</div>";
+        echo "<div><div class='example_cube' style='background-color: Goldenrod;' align='center'>&nbsp</div>&nbspВыбрано вами</div>";
+      ?>
       <h2 align='center'>Выбранные билеты</h2>
       <form action='access_contract.php' method='post'>
         <input type='submit' name='sub_btn' value='Подвердить выбор'>
-        <input type='hidden' id='now_tickets' name='now_tickets' value=''>
+        <input type='hidden' id='now_tickets' name='now_tickets' value='' required>
 
         <div id ='sum_tickets' class='sum_tickets' name='sum_tickets'>Итого: 0 руб.<div>
         </form>
     </div>
+  </div>
   </div>
   <?php
     mysqli_close($link);

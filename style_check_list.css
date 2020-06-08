@@ -1,17 +1,21 @@
 form{
   width: 60%;
-  margin: 0 20% 0 20%;
+  margin: 20px 20% 20px 20%;
   background-color: white;
   border: 8px solid transparent;
   min-width: 665px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
 }
 .big_form{
-  font-style: 
+  font-style:
   width: 60%;
-  margin: 0 20% 0 20%;
+  margin: 20px 20% 0 20%;
   background-color: white;
   border: 8px solid transparent;
   min-width: 665px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+}
+p{
+  border:black solid 2px;
+  margin:2px;
 }
